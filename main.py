@@ -1,12 +1,18 @@
-def check_winner(user, computer):
-    if user == computer:
-        return "It's a tie!"
-    
-    if user == "stone" and computer == "scissor":
-        return "You win!"
-    elif user == "paper" and computer == "stone":
-        return "You win!"
-    elif user == "scissor" and computer == "paper":
-        return "You win!"
-    else:
-        return "Computer wins!"
+from computer import get_computer_choice
+from result import check_winner
+
+def play_game():
+    user_choice = input("Enter stone, paper or scissor: ").lower()
+
+    if user_choice not in ["stone", "paper", "scissor"]:
+        print("Invalid choice!")
+        return
+
+    computer_choice = get_computer_choice()
+
+    print("Computer chose:", computer_choice)
+
+    result = check_winner(user_choice, computer_choice)
+    print(result)
+
+play_game()
